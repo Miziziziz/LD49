@@ -21,14 +21,18 @@ var max_grab_time = 0.1
 export(Curve) var wheel_anim_curve
 
 
-onready var spokes_r = $SpokesR
-onready var spokes_l = $SpokesL
-onready var arm_l = $ArmL
-onready var arm_r = $ArmR
+onready var spokes_r = $Graphics/SpokesR
+onready var spokes_l = $Graphics/SpokesL
+onready var arm_l = $Graphics/ArmL
+onready var arm_r = $Graphics/ArmR
+
+var large_cursor = preload("res://player/assets/cursor.png")
+var small_cursor = preload("res://player/assets/cursor_small.png")
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+	update_cursor()
 
 var c_move_amnt = 0.0
 func _physics_process(delta):
@@ -156,3 +160,10 @@ func update_wheel_animations():
 	
 	spokes_l.play("spin", left_wheel_velocity < 0.0)
 	spokes_r.play("spin", right_wheel_velocity < 0.0)
+
+func update_cursor():
+	var cursor = small_cursor
+	if grabbed_wheel == WHEELS.NONE:
+		cursor = large_cursor
+	
+	Input.set_custom_mouse_cursor(cursor, 0, Vector2(8,8))

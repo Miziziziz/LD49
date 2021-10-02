@@ -30,8 +30,10 @@ window/size/width=300
 window/size/height=300
 window/size/test_width=800
 window/size/test_height=800
+mouse_cursor/custom_image="res://player/assets/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 8, 8 )
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="keep_height"
 
 [importer_defaults]
 
