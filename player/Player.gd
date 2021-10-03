@@ -5,9 +5,9 @@ var left_wheel_velocity = 0.0
 var right_wheel_velocity = 0.0
 var drag = 0.6
 
-var torque_modifier = 0.1
+var torque_modifier = 0.05
 var max_turn = 10.0
-var speed_modifier = 1.0
+var speed_modifier = 2.0
 var max_speed = 30.0
 
 var mouse_last_pos = Vector2()
@@ -54,6 +54,7 @@ func _process(delta):
 	update_cursor()
 
 var c_move_amnt = 0.0
+var max_c_move_amnt = 200.0
 var movement_dir_complete = false
 func _physics_process(delta):
 	if in_interface:
@@ -86,11 +87,15 @@ func _physics_process(delta):
 			grab_time = get_time()
 			
 	
-	if grabbed_wheel in [WHEELS.LEFT, WHEELS.RIGHT] and wheel_under_mouse in [WHEELS.LEFT, WHEELS.RIGHT] :
-		grab_time = get_time()
+#	if grabbed_wheel in [WHEELS.LEFT, WHEELS.RIGHT] and wheel_under_mouse in [WHEELS.LEFT, WHEELS.RIGHT] :
+#		grab_time = get_time()
 	
-	if (grabbed_wheel == WHEELS.BOTH or wheel_under_mouse == WHEELS.NONE) and get_time() - grab_time > max_grab_time:
+	if abs(c_move_amnt) > 200:
 		grabbed_wheel = WHEELS.NONE
+
+	
+#	if (grabbed_wheel == WHEELS.BOTH or wheel_under_mouse == WHEELS.NONE) and get_time() - grab_time > max_grab_time:
+#		grabbed_wheel = WHEELS.NONE
 	
 	if Input.is_action_just_released("main_move") or Input.is_action_just_released("alt_move"):
 		grabbed_wheel = WHEELS.NONE
@@ -98,6 +103,11 @@ func _physics_process(delta):
 	var move_amnt = calc_move_amnt(mouse_offset)
 	var p_c_move_amnt = c_move_amnt
 	c_move_amnt += move_amnt
+	
+#	if abs(c_move_amnt) > max_c_move_amnt:
+#		c_move_amnt = max_c_move_amnt * sign(c_move_amnt)
+#		move_amnt = (max_c_move_amnt - abs(p_c_move_amnt)) * sign(c_move_amnt)
+	
 	if grabbed_wheel != WHEELS.NONE and abs(p_c_move_amnt) < 10 and abs(c_move_amnt) > 10:
 		if !movement_dir_complete:
 			if c_move_amnt > 0:
@@ -123,7 +133,7 @@ func _physics_process(delta):
 
 	if grabbed_wheel == WHEELS.BOTH:
 		var velo = max(right_wheel_velocity, left_wheel_velocity)
-		if sign(move_amnt) != sign(velo):
+		if sign(move_amnt) != sign(velo) and sign(move_amnt) != 0:
 			velo = lerp(velo, move_amnt, 0.4)
 		else:
 			velo += move_amnt
