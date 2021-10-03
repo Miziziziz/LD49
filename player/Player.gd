@@ -35,7 +35,10 @@ onready var geiger_counter = $GeigerCounter
 var large_cursor = preload("res://player/assets/cursor.png")
 var small_cursor = preload("res://player/assets/cursor_small.png")
 
+var in_interface = false
+
 func _ready():
+	$ChairSpin.volume_db = linear2db(0.0)
 	health.radiation_detector = radiation_detector
 	geiger_counter.radiation_detector = radiation_detector
 	health.connect("update_health_percent", self, "update_red_screen")
@@ -53,6 +56,11 @@ func _process(delta):
 var c_move_amnt = 0.0
 var movement_dir_complete = false
 func _physics_process(delta):
+	if in_interface:
+		$ChairSpin.stop()
+		right_wheel_velocity = 0.0
+		left_wheel_velocity = 0.0
+		return
 	var mouse_pos = get_global_mouse_position()
 	var mouse_offset = mouse_pos - mouse_last_pos
 	var wheel_under_mouse = get_wheel_selected()
@@ -88,7 +96,7 @@ func _physics_process(delta):
 	var move_amnt = calc_move_amnt(mouse_offset)
 	var p_c_move_amnt = c_move_amnt
 	c_move_amnt += move_amnt
-	if abs(p_c_move_amnt) < 10 and abs(c_move_amnt) > 10:
+	if grabbed_wheel != WHEELS.NONE and abs(p_c_move_amnt) < 10 and abs(c_move_amnt) > 10:
 		if !movement_dir_complete:
 			if c_move_amnt > 0:
 				$ChairSqueaks.play()

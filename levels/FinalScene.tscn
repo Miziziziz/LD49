@@ -1,0 +1,279 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://environment/assets/face.png" type="Texture" id=2]
+[ext_resource path="res://sfx/wind.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/jumpscare.wav" type="AudioStream" id=4]
+[ext_resource path="res://levels/FinalScene.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 6.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Label2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.9, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Label2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 481, 481 ), Vector2( 481, 481 ), Vector2( 297, 185 ), Vector2( 297, 185 ), Vector2( 249, 193 ), Vector2( 289, 249 ), Vector2( 297, 185 ), Vector2( 297, 185 ), Vector2( 249, 193 ), Vector2( 289, 249 ), Vector2( 297, 185 ), Vector2( 297, 185 ), Vector2( 297, 185 ), Vector2( 249, 193 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Head:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -6.70423, 21.8927, -12.6726, 19.8738, -6.70423, 21.8927, -12.6726, 19.8738, -6.70423, 21.8927, -6.70423, -12.6726 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Jumpscare:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 6.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "go_to_next_level"
+} ]
+}
+
+[node name="FinalScene" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Building" type="Node2D" parent="."]
+position = Vector2( 73, 9 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Building"]
+color = Color( 0.321569, 0.321569, 0.321569, 1 )
+polygon = PoolVector2Array( 121, 177, 121, 97, 97, 105, 89, 113, 73, 97, 81, 65, 73, 25, 41, 25, -15, 25, -15, 185 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Building"]
+position = Vector2( -2.625, 0 )
+scale = Vector2( 1.29167, 1 )
+color = Color( 0.192157, 0.192157, 0.192157, 1 )
+polygon = PoolVector2Array( 9, 49, 9, 89, 33, 89, 33, 49 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="Building"]
+position = Vector2( -2.625, 65 )
+scale = Vector2( 1.29167, 1 )
+color = Color( 0.192157, 0.192157, 0.192157, 1 )
+polygon = PoolVector2Array( 9, 49, 9, 89, 33, 89, 33, 49 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="Building"]
+position = Vector2( 56, 64 )
+scale = Vector2( 1.25, 1 )
+color = Color( 0.192157, 0.192157, 0.192157, 1 )
+polygon = PoolVector2Array( 9, 49, 9, 89, 33, 89, 33, 49 )
+
+[node name="Building2" type="Node2D" parent="."]
+position = Vector2( 361, 1 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Building2"]
+color = Color( 0.4, 0.4, 0.4, 1 )
+polygon = PoolVector2Array( 64, 152, 64, 40, 56, 40, 40, 48, 24, 88, 8, 88, 8, 56, 0, 80, 0, 184 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Building2"]
+position = Vector2( 32, 0 )
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+polygon = PoolVector2Array( 8, 64, 8, 88, 24, 88, 24, 64 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="Building2"]
+position = Vector2( 0, 48 )
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+polygon = PoolVector2Array( 8, 64, 8, 88, 24, 88, 24, 64 )
+
+[node name="Polygon2D6" type="Polygon2D" parent="Building2"]
+position = Vector2( 32, 48 )
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+polygon = PoolVector2Array( 8, 64, 8, 88, 24, 88, 24, 64 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+color = Color( 0.443137, 0.443137, 0.443137, 1 )
+polygon = PoolVector2Array( 524, 139, 412, 150, 307, 182, 191, 204, 118, 220, 60, 272, 58, 343, 578, 338 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 273, -15 )
+amount = 128
+lifetime = 10.0
+preprocess = 8.0
+emission_shape = 2
+emission_rect_extents = Vector2( 350, 1 )
+direction = Vector2( 0.2, 1 )
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.1
+angular_velocity = 55.19
+angular_velocity_random = 1.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 8.27
+scale_amount_random = 0.53
+color = Color( 0.443137, 0.443137, 0.443137, 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.247059, 0.247059, 0.247059, 1 )
+polygon = PoolVector2Array( -37, 181, 40, 168, 142, 174, 225, 187, 304, 208, 450, 236, 539, 245, 604, 288, 576, 365, 277, 363, -56, 333 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -81.0
+margin_top = -67.0
+margin_right = 106.0
+margin_bottom = -34.0
+custom_fonts/font = SubResource( 1 )
+text = "You escaped"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -97.0
+margin_top = -27.0
+margin_right = 101.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 2 )
+text = "...but to what future?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "cutscene"
+anims/cutscene = SubResource( 3 )
+
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( 249, 193 )
+rotation = -0.221179
+texture = ExtResource( 2 )
+
+[node name="Jumpscare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -3.32
+bus = "jumpscare"
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+autoplay = true
+bus = "wind"

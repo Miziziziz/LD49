@@ -18,6 +18,7 @@
 [ext_resource path="res://sfx/zombie/footstep_2.wav" type="AudioStream" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 31.0644
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -84,6 +85,7 @@ script = ExtResource( 6 )
 shape = SubResource( 1 )
 
 [node name="Graphics" type="Node2D" parent="."]
+position = Vector2( 0, -23 )
 scale = Vector2( 1.1, 1.1 )
 
 [node name="Legs" type="AnimatedSprite" parent="Graphics"]

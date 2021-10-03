@@ -233,7 +233,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=35]
-radius = 315.014
+radius = 261.048
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",

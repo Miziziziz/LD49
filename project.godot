@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="LD49"
-run/main_scene="res://World.tscn"
+run/main_scene="res://levels/Tutorial.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+LevelManager="*res://singletons/LevelManager.tscn"
 
 [display]
 
@@ -33,7 +37,7 @@ window/size/test_height=800
 mouse_cursor/custom_image="res://player/assets/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 8, 8 )
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

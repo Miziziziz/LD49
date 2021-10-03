@@ -1,0 +1,244 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://environment/assets/large_tile.png" type="Texture" id=1]
+[ext_resource path="res://environment/assets/block_64.png" type="Texture" id=2]
+[ext_resource path="res://environment/assets/block_32.png" type="Texture" id=3]
+[ext_resource path="res://environment/assets/beveled_block_32.png" type="Texture" id=4]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://letters/ComputerInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/Computer.gd" type="Script" id=7]
+[ext_resource path="res://environment/RadioactiveChunks.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sfx/water spray.wav" type="AudioStream" id=9]
+[ext_resource path="res://environment/TileMapWalls.gd" type="Script" id=10]
+[ext_resource path="res://FloorTileMap.gd" type="Script" id=11]
+[ext_resource path="res://environment/LevelExit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://environment/LevelEntrance.tscn" type="PackedScene" id=13]
+[ext_resource path="res://environment/Computer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sfx/keys/key_1.wav" type="AudioStream" id=15]
+[ext_resource path="res://sfx/keys/key_3.wav" type="AudioStream" id=16]
+[ext_resource path="res://sfx/keys/key_2.wav" type="AudioStream" id=17]
+[ext_resource path="res://player/RandSoundPlayer.gd" type="Script" id=18]
+[ext_resource path="res://sfx/computer_startup.wav" type="AudioStream" id=19]
+[ext_resource path="res://sfx/sin_wave.wav" type="AudioStream" id=20]
+
+[sub_resource type="TileSet" id=1]
+0/name = "block_64.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0.360784, 0.360784, 0.360784, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "large_tile.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 0.403922, 0.403922, 0.403922, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 72.0625
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=6]
+0/name = "block_32.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0.121569, 0.121569, 0.121569, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/occluder = SubResource( 2 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "beveled_block_32.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/occluder = SubResource( 4 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 5 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 33, 17 )
+scale = Vector2( 197.935, 156.123 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FloorTileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 1, 0, 327698, 1, 0, 458748, 1, 0, 458749, 1, 0, 458750, 1, 0, 458751, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 524284, 1, 0, 524285, 1, 0, 524286, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 851976, 1, 0, 851977, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 851986, 1, 0, 917512, 1, 0, 917513, 1, 0, 917514, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0, 917520, 1, 0, 917521, 1, 0, 917522, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 1, 0, 1114130, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 1245202, 1, 0, 1245203, 1, 0, 1245204, 1, 0, 1245205, 1, 0, 1245206, 1, 0, 1245207, 1, 0, 1245208, 1, 0, 1310735, 1, 0, 1310736, 1, 0, 1310737, 1, 0, 1310738, 1, 0, 1310739, 1, 0, 1310740, 1, 0, 1310741, 1, 0, 1310742, 1, 0, 1310743, 1, 0, 1310744, 1, 0, 1376271, 1, 0, 1376272, 1, 0, 1376273, 1, 0, 1376274, 1, 0, 1376275, 1, 0, 1376276, 1, 0, 1376277, 1, 0, 1376278, 1, 0, 1376279, 1, 0, 1376280, 1, 0 )
+script = ExtResource( 11 )
+
+[node name="EnvironmentMisc" type="Node2D" parent="."]
+
+[node name="Radiation" type="Node2D" parent="EnvironmentMisc"]
+
+[node name="RadioactiveChunks" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1179, 1222 )
+rotation = -0.696735
+
+[node name="RadioactiveChunks2" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1116, 1129 )
+
+[node name="RadioactiveChunks3" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1040, 1237 )
+
+[node name="RadioactiveChunks4" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1117, 1328 )
+rotation = 1.16406
+
+[node name="RadioactiveChunks5" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1036, 1390 )
+rotation = 0.066085
+scale = Vector2( 1, 1 )
+
+[node name="RadioactiveChunks6" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1225, 1345 )
+rotation = 0.903252
+scale = Vector2( 1, 1 )
+
+[node name="RadioactiveChunks7" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1057, 1033 )
+rotation = 0.903252
+scale = Vector2( 1, 1 )
+
+[node name="RadioactiveChunks8" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1345, 1265 )
+rotation = 0.903252
+scale = Vector2( 1, 1 )
+
+[node name="RadioactiveChunks9" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
+position = Vector2( 1409, 1361 )
+rotation = 0.903252
+scale = Vector2( 1, 1 )
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Player" parent="Characters" instance=ExtResource( 5 )]
+position = Vector2( -135, 385 )
+rotation = 1.60931
+
+[node name="Computer" parent="." instance=ExtResource( 14 )]
+position = Vector2( 729, 948 )
+rotation = 3.14159
+script = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="Computer"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/Area2D"]
+shape = SubResource( 8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Computer"]
+layer = 11
+
+[node name="ComputerInterface" parent="Computer/CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+
+[node name="KeySounds" type="Node2D" parent="Computer"]
+script = ExtResource( 18 )
+min_pitch = 0.95
+max_pitch = 1.05
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Computer/KeySounds"]
+stream = ExtResource( 15 )
+bus = "Reverbant"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Computer/KeySounds"]
+stream = ExtResource( 17 )
+bus = "Reverbant"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Computer/KeySounds"]
+stream = ExtResource( 16 )
+bus = "Reverbant"
+
+[node name="CompStartUpSound" type="AudioStreamPlayer" parent="Computer"]
+stream = ExtResource( 19 )
+bus = "Sfx"
+
+[node name="CompHum" type="AudioStreamPlayer" parent="Computer"]
+stream = ExtResource( 20 )
+volume_db = -29.715
+bus = "Sfx"
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 6 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 524318, 1, 0, 524319, 1, 0, 524320, 1, 0, 524321, 1, 0, 524322, 1, 0, 524323, 1, 0, 524324, 1, 0, 524325, 1, 0, 589861, 1, 0, 655397, 1, 0, 720933, 1, 0, 786469, 1, 0, 852005, 1, 0, 917541, 1, 0, 1048568, 1, 0, 1048569, 1, 0, 1048570, 1, 0, 1048571, 1, 0, 1048572, 1, 0, 1048573, 1, 0, 1048574, 1, 0, 1048575, 1, 0, 983040, 1, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983077, 1, 0, 1048592, 1, 0, 1048613, 1, 0, 1114128, 1, 0, 1114149, 1, 0, 1179664, 1, 0, 1179685, 1, 0, 1245200, 1, 0, 1245221, 1, 0, 1310736, 1, 0, 1310757, 1, 0, 1376272, 1, 0, 1376293, 1, 0, 1441808, 1, 0, 1441829, 1, 0, 1507344, 1, 0, 1507365, 1, 0, 1572880, 1, 0, 1572901, 1, 0, 1638416, 1, 0, 1638425, 1, 0, 1638426, 1, 0, 1638437, 1, 0, 1703952, 1, 0, 1703961, 1, 0, 1703962, 1, 0, 1703973, 1, 0, 1769488, 1, 0, 1769497, 1, 0, 1769498, 1, 0, 1769509, 1, 0, 1835024, 1, 0, 1835033, 1, 0, 1835034, 1, 0, 1835045, 1, 0, 1900560, 1, 0, 1900569, 1, 0, 1900570, 1, 0, 1900581, 1, 0, 1966096, 1, 0, 1966105, 1, 0, 1966106, 1, 0, 1966117, 1, 0, 2031632, 1, 0, 2031633, 1, 0, 2031634, 1, 0, 2031635, 1, 0, 2031636, 1, 0, 2031637, 1, 0, 2031638, 1, 0, 2031639, 1, 0, 2031640, 1, 0, 2031641, 1, 0, 2031642, 1, 0, 2031643, 1, 0, 2031644, 1, 0, 2031645, 1, 0, 2031646, 1, 0, 2031653, 1, 0, 2097182, 1, 0, 2097189, 1, 0, 2162718, 1, 0, 2162725, 1, 0, 2228254, 1, 0, 2228261, 1, 0, 2293790, 1, 0, 2293797, 1, 0, 2359326, 1, 0, 2359333, 1, 0, 2424862, 1, 0, 2424869, 1, 0, 2424870, 1, 0, 2424871, 1, 0, 2424872, 1, 0, 2424873, 1, 0, 2424874, 1, 0, 2424875, 1, 0, 2424876, 1, 0, 2424877, 1, 0, 2424878, 1, 0, 2424879, 1, 0, 2424880, 1, 0, 2424881, 1, 0, 2490398, 1, 0, 2555934, 1, 0, 2621470, 1, 0, 2687006, 1, 0, 2752542, 1, 0, 2818078, 1, 0, 2883614, 1, 0, 2883615, 1, 0, 2883616, 1, 0, 2883617, 1, 0, 2883618, 1, 0, 2883619, 1, 0, 2883620, 1, 0, 2883621, 1, 0, 2883622, 1, 0, 2883623, 1, 0, 2883624, 1, 0, 2883625, 1, 0, 2883626, 1, 0, 2883627, 1, 0, 2883628, 1, 0, 2883629, 1, 0, 2883630, 1, 0, 2883631, 1, 0, 2883632, 1, 0, 2883633, 1, 0 )
+script = ExtResource( 10 )
+
+[node name="LevelExit" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1489, 1313 )
+rotation = -4.71238
+
+[node name="LevelEntrance" parent="." instance=ExtResource( 13 )]
+position = Vector2( -135, 385 )
+rotation = -1.57079
+
+[node name="FireSuppressionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="fire_suppression_turned_on" from="Computer" to="EnvironmentMisc/Radiation" method="queue_free"]
+[connection signal="fire_suppression_turned_on" from="Computer" to="FireSuppressionSound" method="play"]

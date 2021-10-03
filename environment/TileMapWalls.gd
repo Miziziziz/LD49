@@ -32,6 +32,6 @@ func add_wall_layer():
 	cur_modulate -= modulate_inc_amnt
 	dup.modulate = Color(cur_modulate, cur_modulate, cur_modulate)
 	randomize_wall_blocks(dup)
-	
+	canvas_layer.add_to_group("instanced")
 	get_tree().get_root().add_child(canvas_layer)
 	canvas_layer.add_child(dup)
