@@ -5,8 +5,8 @@ var left_wheel_velocity = 0.0
 var right_wheel_velocity = 0.0
 var drag = 0.6
 
-var torque_modifier = 0.05
-var max_turn = 4.0
+var torque_modifier = 0.1
+var max_turn = 10.0
 var speed_modifier = 1.0
 var max_speed = 30.0
 
@@ -66,6 +66,7 @@ func _physics_process(delta):
 	var wheel_under_mouse = get_wheel_selected()
 	
 	if Input.is_action_just_pressed("main_move") and !dead:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		movement_dir_complete = false
 		c_move_amnt = 0.0
 		arm_l.play("idle")
@@ -75,6 +76,7 @@ func _physics_process(delta):
 			grabbed_wheel = WHEELS.BOTH
 			grab_time = get_time()
 	if Input.is_action_just_pressed("alt_move") and !dead:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		movement_dir_complete = false
 		c_move_amnt = 0.0
 		arm_l.play("idle")
@@ -209,7 +211,7 @@ func update_cursor():
 	if grabbed_wheel == WHEELS.NONE:
 		cursor = large_cursor
 	
-	Input.set_custom_mouse_cursor(cursor, 0, Vector2(8,8))
+	#Input.set_custom_mouse_cursor(cursor, 0, Vector2(8,8))
 
 func update_red_screen(percent):
 	$CanvasLayer/RedScreen.show()

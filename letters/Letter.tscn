@@ -1,12 +1,22 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://fonts/Ephesis-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://sfx/paper_sound.wav" type="AudioStream" id=2]
+[ext_resource path="res://letters/Letter.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Ephesis-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sfx/paper_sound.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 72.0625
+
+[sub_resource type="DynamicFont" id=8]
+size = 10
+extra_spacing_top = -3
+extra_spacing_bottom = -10
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
 extra_spacing_top = -5
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.964706, 0.678431, 0.537255, 0.87451 )
@@ -30,7 +40,53 @@ border_width_left = 2
 border_width_bottom = 1
 border_color = Color( 0.682353, 0.682353, 0.615686, 1 )
 
-[node name="Letter" type="Control"]
+[node name="Letter" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.858824, 0.854902, 0.780392, 1 )
+polygon = PoolVector2Array( -15, 17, -15, -15, 9, -15, 9, 17 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Polygon2D"]
+color = Color( 0.682353, 0.682353, 0.615686, 1 )
+polygon = PoolVector2Array( -15, -11, -15, -12, 9, -12, 9, -11 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Polygon2D"]
+color = Color( 0.968627, 0.701961, 0.568627, 1 )
+polygon = PoolVector2Array( -14, 17, -14, -15, -13, -15, -13, 17 )
+
+[node name="Label" type="Label" parent="Polygon2D"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -13.0
+margin_top = -11.0
+margin_right = 7.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 8 )
+text = "asd
+agajdqe
+asd
+
+addjf"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaperSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="Letter" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.64865
@@ -41,7 +97,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Letter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.858824, 0.854902, 0.780392, 1 )
@@ -49,7 +105,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Letter/ColorRect"]
 anchor_right = 1.0
 margin_top = 23.5133
 margin_bottom = 25.5133
@@ -58,7 +114,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Letter/ColorRect"]
 anchor_bottom = 1.0
 margin_left = 11.91
 margin_right = 13.91
@@ -67,7 +123,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer/Letter"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,7 +145,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="CanvasLayer/Letter"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -25.0
@@ -106,8 +162,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PaperSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-
-[connection signal="button_up" from="Button" to="." method="hide"]
-[connection signal="button_up" from="Button" to="PaperSound" method="play"]
+[connection signal="button_up" from="CanvasLayer/Letter/Button" to="." method="close_letter"]

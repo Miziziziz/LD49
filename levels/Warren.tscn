@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://environment/assets/large_tile.png" type="Texture" id=1]
 [ext_resource path="res://environment/assets/block_64.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://environment/TileMapWalls.gd" type="Script" id=11]
 [ext_resource path="res://FloorTileMap.gd" type="Script" id=12]
 [ext_resource path="res://environment/Desk.tscn" type="PackedScene" id=13]
+[ext_resource path="res://letters/Letter.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "block_64.png 0"
@@ -170,16 +171,33 @@ position = Vector2( 1689, -399 )
 rotation = 0.0762917
 
 [node name="Desk2" parent="EnvironmentMisc" instance=ExtResource( 13 )]
-position = Vector2( 1641, 825 )
-rotation = -0.17401
+position = Vector2( 529, 977 )
+rotation = -1.4257
+
+[node name="Letter" parent="EnvironmentMisc/Desk2" instance=ExtResource( 14 )]
+rotation = -0.240818
+
+[node name="Letter" parent="EnvironmentMisc/Desk2/Letter/CanvasLayer" index="0"]
+visible = true
+
+[node name="Label" parent="EnvironmentMisc/Desk2/Letter/CanvasLayer/Letter" index="1"]
+text = "Mr Roberts,
+I believe your worries are unfounded, but in the instance your fears come true, simple take the following twice daily:
+
+pentetate calcium trisodium     1 capsule
+potassium iodide		                    1 capsule
+prussian blue                         2 capsules
+pentetate calcium trisodium   4 capsules
+pentetate zinc trisodium 	       2 capsules
+"
 
 [node name="Desk3" parent="EnvironmentMisc" instance=ExtResource( 13 )]
-position = Vector2( 1361, 641 )
-rotation = 0.0971568
+position = Vector2( 1641, 817 )
+rotation = 1.98206
 
 [node name="Desk4" parent="EnvironmentMisc" instance=ExtResource( 13 )]
-position = Vector2( 1513, 633 )
-rotation = -0.105165
+position = Vector2( 1617, 633 )
+rotation = 0.312829
 
 [node name="Characters" type="Node2D" parent="."]
 
@@ -226,3 +244,5 @@ position = Vector2( 833, -1031 )
 
 [node name="LevelEntrance" parent="." instance=ExtResource( 10 )]
 position = Vector2( 353, -1031 )
+
+[editable path="EnvironmentMisc/Desk2/Letter"]

@@ -51,22 +51,22 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=2]
 radius = 72.0625
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=7]
 0/name = "block_32.png 0"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -74,18 +74,18 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/region = Rect2( 0, 0, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
-0/occluder = SubResource( 2 )
+0/occluder = SubResource( 3 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 3 )
+0/shape = SubResource( 4 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -96,18 +96,18 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/region = Rect2( 0, 0, 32, 32 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
-1/occluder = SubResource( 4 )
+1/occluder = SubResource( 5 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 5 )
+1/shape = SubResource( 6 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -150,27 +150,22 @@ rotation = 1.16406
 [node name="RadioactiveChunks5" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
 position = Vector2( 1036, 1390 )
 rotation = 0.066085
-scale = Vector2( 1, 1 )
 
 [node name="RadioactiveChunks6" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
 position = Vector2( 1225, 1345 )
 rotation = 0.903252
-scale = Vector2( 1, 1 )
 
 [node name="RadioactiveChunks7" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
 position = Vector2( 1057, 1033 )
 rotation = 0.903252
-scale = Vector2( 1, 1 )
 
 [node name="RadioactiveChunks8" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
 position = Vector2( 1345, 1265 )
 rotation = 0.903252
-scale = Vector2( 1, 1 )
 
 [node name="RadioactiveChunks9" parent="EnvironmentMisc/Radiation" instance=ExtResource( 8 )]
 position = Vector2( 1409, 1361 )
 rotation = 0.903252
-scale = Vector2( 1, 1 )
 
 [node name="Characters" type="Node2D" parent="."]
 
@@ -188,7 +183,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/Area2D"]
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Computer"]
 layer = 11
@@ -223,7 +218,7 @@ volume_db = -29.715
 bus = "Sfx"
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 6 )
+tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 524318, 1, 0, 524319, 1, 0, 524320, 1, 0, 524321, 1, 0, 524322, 1, 0, 524323, 1, 0, 524324, 1, 0, 524325, 1, 0, 589861, 1, 0, 655397, 1, 0, 720933, 1, 0, 786469, 1, 0, 852005, 1, 0, 917541, 1, 0, 1048568, 1, 0, 1048569, 1, 0, 1048570, 1, 0, 1048571, 1, 0, 1048572, 1, 0, 1048573, 1, 0, 1048574, 1, 0, 1048575, 1, 0, 983040, 1, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983045, 1, 0, 983046, 1, 0, 983047, 1, 0, 983048, 1, 0, 983049, 1, 0, 983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983077, 1, 0, 1048592, 1, 0, 1048613, 1, 0, 1114128, 1, 0, 1114149, 1, 0, 1179664, 1, 0, 1179685, 1, 0, 1245200, 1, 0, 1245221, 1, 0, 1310736, 1, 0, 1310757, 1, 0, 1376272, 1, 0, 1376293, 1, 0, 1441808, 1, 0, 1441829, 1, 0, 1507344, 1, 0, 1507365, 1, 0, 1572880, 1, 0, 1572901, 1, 0, 1638416, 1, 0, 1638425, 1, 0, 1638426, 1, 0, 1638437, 1, 0, 1703952, 1, 0, 1703961, 1, 0, 1703962, 1, 0, 1703973, 1, 0, 1769488, 1, 0, 1769497, 1, 0, 1769498, 1, 0, 1769509, 1, 0, 1835024, 1, 0, 1835033, 1, 0, 1835034, 1, 0, 1835045, 1, 0, 1900560, 1, 0, 1900569, 1, 0, 1900570, 1, 0, 1900581, 1, 0, 1966096, 1, 0, 1966105, 1, 0, 1966106, 1, 0, 1966117, 1, 0, 2031632, 1, 0, 2031633, 1, 0, 2031634, 1, 0, 2031635, 1, 0, 2031636, 1, 0, 2031637, 1, 0, 2031638, 1, 0, 2031639, 1, 0, 2031640, 1, 0, 2031641, 1, 0, 2031642, 1, 0, 2031643, 1, 0, 2031644, 1, 0, 2031645, 1, 0, 2031646, 1, 0, 2031653, 1, 0, 2097182, 1, 0, 2097189, 1, 0, 2162718, 1, 0, 2162725, 1, 0, 2228254, 1, 0, 2228261, 1, 0, 2293790, 1, 0, 2293797, 1, 0, 2359326, 1, 0, 2359333, 1, 0, 2424862, 1, 0, 2424869, 1, 0, 2424870, 1, 0, 2424871, 1, 0, 2424872, 1, 0, 2424873, 1, 0, 2424874, 1, 0, 2424875, 1, 0, 2424876, 1, 0, 2424877, 1, 0, 2424878, 1, 0, 2424879, 1, 0, 2424880, 1, 0, 2424881, 1, 0, 2490398, 1, 0, 2555934, 1, 0, 2621470, 1, 0, 2687006, 1, 0, 2752542, 1, 0, 2818078, 1, 0, 2883614, 1, 0, 2883615, 1, 0, 2883616, 1, 0, 2883617, 1, 0, 2883618, 1, 0, 2883619, 1, 0, 2883620, 1, 0, 2883621, 1, 0, 2883622, 1, 0, 2883623, 1, 0, 2883624, 1, 0, 2883625, 1, 0, 2883626, 1, 0, 2883627, 1, 0, 2883628, 1, 0, 2883629, 1, 0, 2883630, 1, 0, 2883631, 1, 0, 2883632, 1, 0, 2883633, 1, 0 )
