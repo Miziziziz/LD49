@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/Shadow.gd" type="Script" id=2]
+[ext_resource path="res://environment/assets/computer_spritesheet.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 46, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 128, 64 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+} ]
+
+[node name="Computer" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="Graphics" type="Node2D" parent="."]
+script = ExtResource( 2 )
+shadow_offset = 8.0
+
+[node name="Shadow" type="Sprite" parent="Graphics"]
+modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -6, 0 )
+texture = ExtResource( 3 )
+hframes = 2
+
+[node name="Sprite" type="AnimatedSprite" parent="Graphics"]
+frames = SubResource( 4 )
+animation = "idle"
+playing = true

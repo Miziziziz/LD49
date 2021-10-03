@@ -26,9 +26,9 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=300
+window/size/width=500
 window/size/height=300
-window/size/test_width=800
+window/size/test_width=1200
 window/size/test_height=800
 mouse_cursor/custom_image="res://player/assets/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 8, 8 )
@@ -81,6 +81,7 @@ exit={
 2d_physics/layer_1="environment"
 2d_physics/layer_2="characters"
 2d_physics/layer_3="wheels"
+2d_physics/layer_4="radioactive"
 
 [physics]
 

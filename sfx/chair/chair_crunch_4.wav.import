@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chair_crunch_4.wav-4b9de2ffb3747bd8f673bb9828631efd.sample"
+
+[deps]
+
+source_file="res://sfx/chair/chair_crunch_4.wav"
+dest_files=[ "res://.import/chair_crunch_4.wav-4b9de2ffb3747bd8f673bb9828631efd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

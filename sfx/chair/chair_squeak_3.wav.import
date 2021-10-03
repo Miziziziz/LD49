@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chair_squeak_3.wav-6a703df8d5432a04847f2c5a34cc16ec.sample"
+
+[deps]
+
+source_file="res://sfx/chair/chair_squeak_3.wav"
+dest_files=[ "res://.import/chair_squeak_3.wav-6a703df8d5432a04847f2c5a34cc16ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

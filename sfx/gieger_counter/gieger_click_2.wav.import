@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gieger_click_2.wav-6c36a72f4ac7e035320cf837ffe3a222.sample"
+
+[deps]
+
+source_file="res://sfx/gieger_counter/gieger_click_2.wav"
+dest_files=[ "res://.import/gieger_click_2.wav-6c36a72f4ac7e035320cf837ffe3a222.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

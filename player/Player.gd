@@ -19,15 +19,31 @@ var grab_time = 0.0
 var max_grab_time = 0.1
 
 export(Curve) var wheel_anim_curve
+var dead = false
 
 
 onready var spokes_r = $Graphics/SpokesR
 onready var spokes_l = $Graphics/SpokesL
 onready var arm_l = $Graphics/ArmL
 onready var arm_r = $Graphics/ArmR
+onready var body = $Graphics/Body
+
+onready var health = $Health
+onready var radiation_detector = $RadiationDetector
+onready var geiger_counter = $GeigerCounter
 
 var large_cursor = preload("res://player/assets/cursor.png")
 var small_cursor = preload("res://player/assets/cursor_small.png")
+
+func _ready():
+	health.radiation_detector = radiation_detector
+	geiger_counter.radiation_detector = radiation_detector
+	health.connect("update_health_percent", self, "update_red_screen")
+	health.connect("dead", self, "die")
+	$CanvasLayer/DeathMessage/Button.connect("button_up", self, "restart")
+
+func restart():
+	get_tree().reload_current_scene()
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
@@ -35,12 +51,14 @@ func _process(delta):
 	update_cursor()
 
 var c_move_amnt = 0.0
+var movement_dir_complete = false
 func _physics_process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var mouse_offset = mouse_pos - mouse_last_pos
 	var wheel_under_mouse = get_wheel_selected()
 	
-	if Input.is_action_just_pressed("main_move"):
+	if Input.is_action_just_pressed("main_move") and !dead:
+		movement_dir_complete = false
 		c_move_amnt = 0.0
 		arm_l.play("idle")
 		arm_r.play("idle")
@@ -48,7 +66,8 @@ func _physics_process(delta):
 		if cur_wheel != WHEELS.NONE:
 			grabbed_wheel = WHEELS.BOTH
 			grab_time = get_time()
-	if Input.is_action_just_pressed("alt_move"):
+	if Input.is_action_just_pressed("alt_move") and !dead:
+		movement_dir_complete = false
 		c_move_amnt = 0.0
 		arm_l.play("idle")
 		arm_r.play("idle")
@@ -70,6 +89,13 @@ func _physics_process(delta):
 	var p_c_move_amnt = c_move_amnt
 	c_move_amnt += move_amnt
 	if abs(p_c_move_amnt) < 10 and abs(c_move_amnt) > 10:
+		if !movement_dir_complete:
+			if c_move_amnt > 0:
+				$ChairSqueaks.play()
+			else:
+				$ChairCrunchs.play()
+				
+		movement_dir_complete = true
 		var anim_name = "push_"
 		if c_move_amnt > 0:
 			anim_name += "fwd"
@@ -83,6 +109,7 @@ func _physics_process(delta):
 			arm_l.play(anim_name)
 		if grabbed_wheel == WHEELS.RIGHT:
 			arm_r.play(anim_name)
+			
 
 	if grabbed_wheel == WHEELS.BOTH:
 		var velo = max(right_wheel_velocity, left_wheel_velocity)
@@ -116,6 +143,14 @@ func _physics_process(delta):
 	
 	var up_dir = transform.basis_xform(Vector2.UP)
 	move_and_slide(up_dir * velo)
+	
+	var spin_vol = linear2db(0.0)
+	var m_v = 20.0
+	var t_v = 100.0
+	if abs(velo) > m_v:
+		var v = clamp((abs(velo)-m_v) / (t_v-m_v), 0.0, 1.0)
+		spin_vol = linear2db(0.1*v)
+	$ChairSpin.volume_db = spin_vol
 	
 #	velo -= velo * drag * delta
 #	left_wheel_velocity = velo
@@ -167,3 +202,19 @@ func update_cursor():
 		cursor = large_cursor
 	
 	Input.set_custom_mouse_cursor(cursor, 0, Vector2(8,8))
+
+func update_red_screen(percent):
+	$CanvasLayer/RedScreen.show()
+	$CanvasLayer/RedScreen.color.g = percent
+	$CanvasLayer/RedScreen.color.b = percent
+
+func die():
+	if dead:
+		return
+	dead = true
+	body.play("die")
+	arm_l.play("idle")
+	arm_r.play("idle")
+	grabbed_wheel = WHEELS.NONE
+	$CanvasLayer/DeathMessage/AnimationPlayer.play("fadein")
+	$DeathSound.play()
